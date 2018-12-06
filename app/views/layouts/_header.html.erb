@@ -17,15 +17,19 @@
                 Get Started
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <%= link_to "Sign-up", new_user_path, class: 'dropdown-item' %>
-                <a class="dropdown-item" href="#">Sign in</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Profile</a>
-                <a class="dropdown-item" href="#">Settings</a>
-                <a class="dropdown-item" href="#">Logout</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Category Management</a>
-                <a class="dropdown-item" href="#">User Management</a>
+                <% if logged_in? %>
+                    <%= link_to current_user.name, current_user, class: 'dropdown-item' %>
+                    <div class="dropdown-divider"></div>
+                    <%= link_to "Profile", root_path, class: 'dropdown-item' %>
+                    <%= link_to "Settings", root_path, class: 'dropdown-item' %>
+                    <%= link_to "Logout", logout_path, method: :delete, class: 'dropdown-item' %>
+                    <div class="dropdown-divider"></div>
+                    <%= link_to "Category Management", root_path, class: 'dropdown-item' %>
+                    <%= link_to "User Management", root_path, class: 'dropdown-item' %>
+                <% else %>
+                    <%= link_to "Sign-up", new_user_path, class: 'dropdown-item' %>
+                    <%= link_to "Sign-in", login_path, class: 'dropdown-item' %>
+                <% end %>
             </div>
         </li>
     </ul>
