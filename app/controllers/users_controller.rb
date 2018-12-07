@@ -6,11 +6,16 @@ class UsersController < ApplicationController
 
     def create
         @user = User.new(user_params)
+        # @user.image = "default.png"
         if @user.save
             redirect_to root_url
         else
             render 'new'
         end
+    end
+
+    def show
+        @user = User.find(params[:id])
     end
 
     private
