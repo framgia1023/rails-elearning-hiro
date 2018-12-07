@@ -8,15 +8,15 @@
 require 'faker'
 
 User.create(
-    name: 'Hironao Uehara',
-    email: 'ueueue6217@gmail.com',
-    password: 'password'
+  name: 'Hironao Uehara',
+  email: 'ueueue6217@gmail.com',
+  password: 'password'
 )
 
 50.times do |n|
-    User.create(
-        name: Faker::Name.name,
-        email: Faker::Internet.unique.email,
-        password: 'password'
-    )
+  User.create(
+    name: Faker::Name.name,
+    email: Faker::Internet.unique.email,
+    password: 'password'
+  )
 end
