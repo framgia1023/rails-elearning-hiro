@@ -1,0 +1,28 @@
+<h1 class="text-center border-bottom p-4 mb-3">Users</h1>
+
+<div class="row">
+    <% @users.each do |user| %>
+        <div class="col-lg-6">
+            <div class="media mb-3">
+                <div class="media-body">
+                    <div class="jumbotron jumbotron-fluid text-center">
+                        <h4><%= link_to user.name, user %></h4>
+                        <% unless current_user?(user) %>
+                            <div id="follow-form">
+                                <% if current_user.following?(user) %>
+                                    <%= render 'unfollow', user: user %>
+                                <% else %>
+                                    <%= render 'follow', user: user%>
+                                <% end %>
+                            </div>
+                        <% end %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <% end %>
+</div>
+
+<div class="text-center border-top pt-3">
+    <%= will_paginate %>
+</div>    
