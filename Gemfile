@@ -41,6 +41,7 @@ gem 'carrierwave',             '1.2.2'
 gem 'faker', :git => 'https://github.com/stympy/faker.git'
 gem 'will_paginate', '~> 3.1.0'
 gem 'will_paginate-bootstrap4'
+gem 'mini_magick',             '4.7.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
