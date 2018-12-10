@@ -17,7 +17,9 @@
                             <div class="col-lg-7 text-center">
                                 <h4><%= link_to user.name, user %></h4>
                                 <h6><%= user.email %></h6>
-                                <%= link_to "delete", admin_user_path(user), method: :delete, data: { confirm: "Are you sure?" }, class: 'btn btn-danger mt-4' %>
+                                <% if current_user.admin? && !current_user?(user) %>
+                                    <%= link_to "delete", admin_user_path(user), method: :delete, data: { confirm: "Are you sure?" }, class: 'btn btn-danger mt-4' %>
+                                <% end %>
                             </div>
                         </div>
                     </div>
