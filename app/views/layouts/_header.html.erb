@@ -37,7 +37,7 @@
                     <%= link_to "Logout", logout_path, method: :delete, class: 'dropdown-item' %>
                     <div class="dropdown-divider"></div>
                     <%= link_to "Category Management", root_path, class: 'dropdown-item' %>
-                    <%= link_to "User Management", root_path, class: 'dropdown-item' %>
+                    <%= link_to "User Management", admin_users_path, class: 'dropdown-item' %>
                 <% else %>
                     <%= link_to "Sign-up", new_user_path, class: 'dropdown-item' %>
                     <%= link_to "Sign-in", login_path, class: 'dropdown-item' %>

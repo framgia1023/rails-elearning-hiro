@@ -7,8 +7,16 @@ Rails.application.routes.draw do
 	resources :sessions, only: [:create]
 	resources :relationships, only: [:create, :destroy]
 	resources :users do
-    	member do
-    		get :following, :followers
+    member do
+    	get :following, :followers
 		end
-    end
+	end
+	
+	namespace :admin do
+    resources :users
+	end
+	
+  namespace :admin do
+    resources :categories
+  end
 end
