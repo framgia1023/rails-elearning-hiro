@@ -17,8 +17,15 @@
                             <div class="col-lg-7 text-center">
                                 <h4><%= link_to user.name, user %></h4>
                                 <h6><%= user.email %></h6>
+                                <% if  ! current_user?(user) %>
+                                    <% if user.admin? %>
+                                        <%= link_to "Remove as admin", admin_user_path(user), method: :put, class: 'btn btn-danger m-3' %>
+                                    <% else %>
+                                        <%= link_to "Set as admin", admin_user_path(user), method: :put, class: 'btn btn-primary m-3' %>
+                                    <% end %>
+                                <% end %>
                                 <% if current_user.admin? && !current_user?(user) %>
-                                    <%= link_to "delete", admin_user_path(user), method: :delete, data: { confirm: "Are you sure?" }, class: 'btn btn-danger mt-4' %>
+                                    <%= link_to "delete", admin_user_path(user), method: :delete, data: { confirm: "Are you sure?" }, class: 'btn btn-danger' %>
                                 <% end %>
                             </div>
                         </div>

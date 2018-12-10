@@ -15,5 +15,16 @@ class Admin::UsersController < Admin::AdminController
     redirect_to admin_users_path
   end
 
+  def update
+    @user = User.find(params[:id])
+    if @user.admin?
+      @user.update(admin:false)
+    else
+      @user.update(admin:true)
+    end 
+    @user.save
+    redirect_to request.referer
+  end
+
 end
 
