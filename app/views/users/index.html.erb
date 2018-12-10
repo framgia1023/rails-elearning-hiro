@@ -5,17 +5,28 @@
         <div class="col-lg-6">
             <div class="media mb-3">
                 <div class="media-body">
-                    <div class="jumbotron jumbotron-fluid text-center">
-                        <h4><%= link_to user.name, user %></h4>
-                        <% unless current_user?(user) %>
-                            <div id="follow-form">
-                                <% if current_user.following?(user) %>
-                                    <%= render 'unfollow', user: user %>
-                                <% else %>
-                                    <%= render 'follow', user: user%>
+                    <div class="jumbotron jumbotron-fluid p-2">
+                        <div class="row">
+                            <div class="col-lg-5">
+                            <% if user.picture.blank? %>
+                                <%= image_tag '/default.png', class:'rounded-circle ml-4' %>
+                            <% else %>
+                                <%= image_tag user.picture.to_s, class:'rounded-circle ml-4'%>
+                            <% end %>
+                            </div>
+                            <div class="col-lg-7 text-center">
+                                <h4><%= link_to user.name, user %></h4>
+                                <% unless current_user?(user) %>
+                                    <div id="follow-form">
+                                        <% if current_user.following?(user) %>
+                                            <%= render 'unfollow', user: user %>
+                                        <% else %>
+                                            <%= render 'follow', user: user%>
+                                        <% end %>
+                                    </div>
                                 <% end %>
                             </div>
-                        <% end %>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -1,0 +1,37 @@
+<div class="row">
+    <div class="col-lg-6 offset-lg-3">
+        <div class="container">
+            <h2 class="text-center">Edit Profile</h2>
+            <hr />
+            
+            <%= form_for @user do |f| %>
+            <%= render 'shared/error_messages', object: f.object %>
+            <% if @user.picture.blank? %>
+                <%= image_tag '/default.png', class: 'rounded-circle mb-4' %>
+            <% else %>
+                <%= image_tag @user.picture.to_s, class:'rounded-circle mb-4'%>
+            <% end %>
+                <div class="form-group">
+                    <%= f.file_field :picture %>
+                </div>
+                <div class="form-group">
+                    <%= f.label :name %>
+                    <%= f.text_field :name, class: 'form-control' %>
+                </div>
+                <div class="form-group">
+                    <%= f.label :email %>
+                    <%= f.text_field :email, class: 'form-control' %>
+                </div>
+                <div class="form-group">
+                    <%= f.label :password %>
+                    <%= f.password_field :password, class: 'form-control' %>
+                </div>
+                <div class="form-group">
+                    <%= f.label :password_confirmation %>
+                    <%= f.password_field :password_confirmation, class: 'form-control' %>
+                </div>
+                <%= f.submit "Update", class: 'btn btn-primary btn-block' %>
+            <% end %>
+        </div>
+    </div>
+</div>
