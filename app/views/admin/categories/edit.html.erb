@@ -3,7 +3,7 @@
         <div class="container">
             <div class="card">
                 <div class="card-header">
-                    <h2>Category registration</h2>
+                    <h2>Edit Category</h2>
                 </div>
                 <div class="card-body">
                     <blockquote class="blockquote mb-0">
@@ -18,11 +18,11 @@
                                 <%= f.text_area :description, class: 'form-control', :size => "20x10", placeholder: "Please enter Category Description" %>
                             </div>
                             <div class="row">
-                                <div class="col-lg-2 text-center">
-                                    <%= link_to  "Back", admin_categories_path %>
+                                <div class="col-lg-3 text-center">
+                                    <%= link_to  "Cancel", admin_categories_path %>
                                 </div>
-                                <div class="col-lg-10">
-                                    <%= f.submit "Submit", class: 'btn btn-primary btn-block' %>
+                                <div class="col-lg-9">
+                                    <%= f.submit "Update", class: 'btn btn-primary btn-block' %>
                                 </div>
                             </div>
                         <% end %>
