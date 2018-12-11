@@ -3,11 +3,11 @@
         <div class="container">
             <div class="card">
                 <div class="card-header">
-                    <h2>Category resistration</h2>
+                    <h2>Category registration</h2>
                 </div>
                 <div class="card-body">
                     <blockquote class="blockquote mb-0">
-                        <%= form_for @category, url:admin_categories_path, method: :post do |f| %>
+                        <%= form_for [:admin,@category] do |f| %>
                             <%= render 'shared/error_messages', object: f.object %>
                             <div class="form-group">
                                 <%= f.label :title %>
