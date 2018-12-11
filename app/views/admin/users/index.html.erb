@@ -1,0 +1,41 @@
+<h1 class="text-center border-bottom p-4 mb-3">User Management</h1>
+
+<div class="row">
+    <% @users.each do |user| %>
+        <div class="col-lg-6">
+            <div class="media mb-3">
+                <div class="media-body">
+                    <div class="jumbotron jumbotron-fluid p-2">
+                        <div class="row">
+                            <div class="col-lg-5">
+                            <% if user.picture.blank? %>
+                                <%= image_tag '/default.png', class:'rounded-circle ml-4' %>
+                            <% else %>
+                                <%= image_tag user.picture.to_s, class:'rounded-circle ml-4'%>
+                            <% end %>
+                            </div>
+                            <div class="col-lg-7 text-center">
+                                <h4><%= link_to user.name, user %></h4>
+                                <h6><%= user.email %></h6>
+                                <% if  ! current_user?(user) %>
+                                    <% if user.admin? %>
+                                        <%= link_to "Remove as admin", admin_user_path(user), method: :put, class: 'btn btn-danger m-3' %>
+                                    <% else %>
+                                        <%= link_to "Set as admin", admin_user_path(user), method: :put, class: 'btn btn-primary m-3' %>
+                                    <% end %>
+                                <% end %>
+                                <% if current_user.admin? && !current_user?(user) %>
+                                    <%= link_to "delete", admin_user_path(user), method: :delete, data: { confirm: "Are you sure?" }, class: 'btn btn-danger' %>
+                                <% end %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <% end %>
+</div>
+
+<div class="text-center border-top pt-3">
+    <%= will_paginate %>
+</div>    
