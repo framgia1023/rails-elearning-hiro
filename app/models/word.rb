@@ -1,22 +1,21 @@
 class Word < ApplicationRecord
     belongs_to :category
 
-    has_many :choices
+    has_many :choices, dependent: :destroy
     accepts_nested_attributes_for :choices
 
     validates :word, presence: true 
-    
     
     validate :correct_validation
     
     def correct_validation
         correct = choices.collect do |c|
-            c.correct
+            c.correct || nil
         end
         if correct.compact.size > 1
-            errors.add(:correct, "only 1 correct is allowed")
+            errors.add(:correct, "should be only 1")
         elsif correct.compact.size < 1
-            errors.add(:correct, "please select a correct")
+            errors.add(:correct, "can't be blank")
         end
     end
 

@@ -11,14 +11,14 @@
                             <%= render 'shared/error_messages', object: f.object %>
                             <div class="form-group">
                                 <%= f.label :word %>
-                                <%= f.text_field :word, class: 'form-control', placeholder: "Please enter Category Title" %>
+                                <%= f.text_field :word, class: 'form-control', placeholder: "Word" %>
                             </div>
                             <%= f.fields_for :choices do |c| %>
                                 <div class="row">
                                     <div class="col-lg-8">
                                         <div class="form-group">
                                         <%= c.label :choice %>
-                                        <%= c.text_field :choice, class: 'form-control' %>
+                                        <%= c.text_field :choice, class: 'form-control', placeholder: "Choices" %>
                                         </div>
                                     </div>
                                     <div class="col-lg-4 mt-4">
@@ -29,7 +29,7 @@
                             <% end %>
                             <div class="row">
                                 <div class="col-lg-2 text-center">
-                                    <%= link_to  "Back", root_path %>
+                                    <%= link_to  "Back", admin_category_words_path %>
                                 </div>
                                 <div class="col-lg-10">
                                     <%= f.submit "Save", class: 'btn btn-primary btn-block' %>

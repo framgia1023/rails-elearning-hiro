@@ -1,8 +1,8 @@
 class Admin::WordsController < Admin::AdminController
 
   def index
-    @words = Word.where(category_id: params[:category_id])
     @category = Category.find(params[:category_id])
+    @words = @category.words
   end
 
   def new
@@ -15,8 +15,8 @@ class Admin::WordsController < Admin::AdminController
 
   def create
     @category = Category.find(params[:category_id])
-    word = @category.words.build(word_params)
-    if word.save
+    @word = @category.words.build(word_params)
+    if @word.save
       flash[:success] = "Successfully created a word."
       redirect_to admin_category_words_url
     else 
@@ -38,7 +38,7 @@ class Admin::WordsController < Admin::AdminController
   def destroy
     @word = Word.find(params[:id])
     @word.destroy
-    edirect_to admin_category_words_urlr
+    redirect_to admin_category_words_url
   end
 
   private
