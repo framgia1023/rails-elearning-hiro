@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    get 'words/new'
+  end
 	root 'home_pages#home'
 	resources :users
 	get '/feed', to: 'users#feed'
@@ -14,7 +17,9 @@ Rails.application.routes.draw do
 	
 	namespace :admin do
 		resources :users, only: [:index, :destroy, :update]
-		resources :categories
+		resources :categories do
+			resources :words
+		end
 	end
 
 end
