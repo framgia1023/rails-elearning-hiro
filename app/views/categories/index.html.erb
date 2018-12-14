@@ -18,7 +18,7 @@
 </div>
 <div class="row">
     <% @categories.each do |category| %>
-        <% @array2.each do |id| %>
+        <% @id_array.uniq.each do |id| %>
             <% if category.id == id %>
                 <div class="col-lg-6">
                     <div class="jumbotron jumbotron">
