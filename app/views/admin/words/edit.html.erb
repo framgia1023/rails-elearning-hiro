@@ -1,0 +1,45 @@
+<div class="row">
+    <div class="col-lg-6 offset-lg-3">
+        <div class="container">
+            <div class="card">
+                <div class="card-header">
+                    <h2>Edit Word and Choices</h2>
+                </div>
+                <div class="card-body">
+                    <blockquote class="blockquote mb-0">
+                        <%= form_for ([:admin,@category,@word]) do |f| %>
+                            <%= render 'shared/error_messages', object: f.object %>
+                            <div class="form-group">
+                                <%= f.label :word %>
+                                <%= f.text_field :word, class: 'form-control', placeholder: "Word" %>
+                            </div>
+                            <%= f.fields_for :choices do |c| %>
+                                <div class="row">
+                                    <div class="col-lg-8">
+                                        <div class="form-group">
+                                        <%= c.label :choice %>
+                                        <%= c.text_field :choice, class: 'form-control', placeholder: "Choices" %>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 mt-4">
+                                        <%= c.label :correct, "Correct" %>
+                                        <%= c.check_box :correct %>
+                                    </div>
+                                </div>
+                            <% end %>
+                            <div class="row">
+                                <div class="col-lg-2 text-center">
+                                    <%= link_to  "Cancel", admin_category_words_path %>
+                                </div>
+                                <div class="col-lg-10">
+                                    <%= f.submit "Update", class: 'btn btn-primary btn-block' %>
+                                </div>
+                            </div>
+                        <% end %>
+                    </blockquote>
+                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+

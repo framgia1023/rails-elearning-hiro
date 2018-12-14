@@ -1,0 +1,41 @@
+<div class="card">
+  <div class="card-header">
+    <div class="row">
+        <div class="col-lg-6">
+            <h2>Admin | Categories</h2>
+        </div>
+        <div class="col-lg-6 text-right">
+            <%= link_to "Add Word", new_admin_category_word_path, class: 'btn btn-primary mr-3' %>
+            <%= link_to "Back", admin_categories_path %>
+        </div>
+    </div>    
+  </div>
+  <div class="card-body">
+    <blockquote class="blockquote mb-0">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Words</th>
+                    <th>Answer</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% @words.each do |word| %>
+                    <tr>
+                        <td><%= word.word %></td>
+                        <td>
+                            <%= word.correct_choice.choice %>
+                        </td>
+                        <td>
+                            <%= link_to "Edit", edit_admin_category_word_path(@category, word), class: 'btn btn-info' %>
+                            <%= link_to "Delete", admin_category_word_path(@category, word), method: :delete, data: {confirm: 'Are you sure?'}, class:'btn btn-danger' %>
+                        </td>
+                    </tr>
+                <% end %>
+            </tbody>
+        </table>
+    </blockquote>
+  </div>
+</div>
+

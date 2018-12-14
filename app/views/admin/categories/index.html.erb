@@ -2,7 +2,7 @@
   <div class="card-header">
     <div class="row">
         <div class="col-lg-6">
-            <h2>Categories Management</h2>
+            <h2>Admin | Categories</h2>
         </div>
         <div class="col-lg-6 text-right">
             <%= link_to "Create Category", new_admin_category_path, class: 'btn btn-primary' %>
@@ -23,9 +23,9 @@
             <tbody>
                 <% @categories.each do |category| %>
                     <tr>
-                        <td><%= link_to category.title, root_path %></td>
+                        <td><%= link_to category.title, admin_category_words_path(category) %></td>
                         <td><%= category.description %></td>
-                        <td><%#= pluralize(post.votes.count, 'Words') %></td>
+                        <td><%= category.words.count %></td>
                         <td>
                             <%= link_to "Edit", edit_admin_category_path(category), class: 'btn btn-info' %>
                             <%= link_to "Delete", admin_category_path(category), method: :delete, data: {confirm: 'Are you sure?'}, class:'btn btn-danger' %>
