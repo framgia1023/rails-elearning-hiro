@@ -19,4 +19,8 @@ class Word < ApplicationRecord
         end
     end
 
+    def correct_choice
+        choices.find_by(correct: true)
+    end
+
 end

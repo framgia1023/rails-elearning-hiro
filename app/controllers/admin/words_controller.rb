@@ -3,7 +3,6 @@ class Admin::WordsController < Admin::AdminController
   def index
     @category = Category.find(params[:category_id])
     @words = @category.words
-    @correctchoices = Choice.where(correct: true)
   end
 
   def new
