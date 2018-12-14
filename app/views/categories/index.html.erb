@@ -1,0 +1,46 @@
+<div class="row">
+    <div class="col-lg-9 text-left">
+        <h1>Categories</h1>
+    </div>
+    <div class="col-lg-3 text-right">
+        <div class="row">
+            <div class="col-lg-4">
+                <%= link_to "All", root_path, class: 'btn btn-info' %>
+            </div>
+            <div class="col-lg-4">
+                <%= link_to "Learn", root_path %>
+            </div>
+            <div class="col-lg-4">
+                <%= link_to "Unlearn", root_path %>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <% @categories.each do |category| %>
+        <% @array2.each do |id| %>
+            <% if category.id == id %>
+                <div class="col-lg-6">
+                    <div class="jumbotron jumbotron">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-7 ml-3">
+                                    <h1><%= category.title %></h1>
+                                    <p class="lead"><%= category.description %></p>
+                                </div>
+                                <div class="col-lg-4 text-right">
+                                    <div><%= "Learned of"  %></div>
+                                    <div class="mt-5 mb-0"><%= link_to "Show results", root_path, class: 'btn btn-info' %></div>
+                                </div>
+                            </div>
+                         </div>
+                    </div>
+                </div> 
+            <% end %> 
+        <% end %>                     
+    <% end %>
+</div>
+
+<div class="text-center border-top pt-3">
+    <%= will_paginate %>
+</div>    
