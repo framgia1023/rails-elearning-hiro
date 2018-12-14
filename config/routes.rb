@@ -14,7 +14,8 @@ Rails.application.routes.draw do
     	get :following, :followers
 		end
 	end
-	
+	resources :categories, only: [:index]
+
 	namespace :admin do
 		resources :users, only: [:index, :destroy, :update]
 		resources :categories do
