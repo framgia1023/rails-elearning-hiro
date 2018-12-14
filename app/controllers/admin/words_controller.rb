@@ -3,6 +3,7 @@ class Admin::WordsController < Admin::AdminController
   def index
     @category = Category.find(params[:category_id])
     @words = @category.words
+    @correctchoices = Choice.where(correct: true)
   end
 
   def new
@@ -31,8 +32,13 @@ class Admin::WordsController < Admin::AdminController
 
   def update
     @word = Word.find(params[:id])
-    @word.update_attributes(word_params)
-    redirect_to admin_category_words_url
+    @category = Category.find(params[:category_id])
+    if @word.update_attributes(update_word_params)
+      flash[:success] = "Successfully updated the word."
+      redirect_to admin_category_words_url
+    else 
+      render 'edit'
+    end
   end
 
   def destroy
@@ -44,6 +50,10 @@ class Admin::WordsController < Admin::AdminController
   private
     def word_params
       params.require(:word).permit(:word, choices_attributes: [:choice, :correct])
+    end
+
+    def update_word_params
+      params.require(:word).permit(:word, choices_attributes: [:choice, :correct, :id])
     end
 
 end

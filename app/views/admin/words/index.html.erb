@@ -24,7 +24,13 @@
                 <% @words.each do |word| %>
                     <tr>
                         <td><%= word.word %></td>
-                        <td><%= ""  %></td>
+                        <td>
+                            <% @correctchoices.each do |cc| %>
+                                <% if cc[:word_id] == word.id %>
+                                    <%= cc[:choice] %>
+                                <% end %>
+                            <% end %>
+                        </td>
                         <td>
                             <%= link_to "Edit", edit_admin_category_word_path(@category, word), class: 'btn btn-info' %>
                             <%= link_to "Delete", admin_category_word_path(@category, word), method: :delete, data: {confirm: 'Are you sure?'}, class:'btn btn-danger' %>

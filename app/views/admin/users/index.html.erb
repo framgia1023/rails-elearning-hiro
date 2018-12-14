@@ -1,41 +1,51 @@
-<h1 class="text-center border-bottom p-4 mb-3">User Management</h1>
-
-<div class="row">
-    <% @users.each do |user| %>
-        <div class="col-lg-6">
-            <div class="media mb-3">
-                <div class="media-body">
-                    <div class="jumbotron jumbotron-fluid p-2">
-                        <div class="row">
-                            <div class="col-lg-5">
-                            <% if user.picture.blank? %>
-                                <%= image_tag '/default.png', class:'rounded-circle ml-4' %>
-                            <% else %>
-                                <%= image_tag user.picture.to_s, class:'rounded-circle ml-4'%>
-                            <% end %>
-                            </div>
-                            <div class="col-lg-7 text-center">
-                                <h4><%= link_to user.name, user %></h4>
-                                <h6><%= user.email %></h6>
+<div class="card">
+    <div class="card-header">
+        <h2>User Management</h2>  
+    </div>
+    <div class="card-body">
+        <blockquote class="blockquote mb-0">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th></th>
+                        <th>Email</th>
+                        <th>set admin/delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                     <% @users.each do |user| %>
+                        <tr>
+                            <td>
+                                <% if user.picture.blank? %>
+                                    <%= image_tag '/default.png', class:'rounded-circle ml-4' %>
+                                <% else %>
+                                    <%= image_tag user.picture.to_s, class:'rounded-circle ml-4'%>
+                                <% end %>
+                            </td>
+                            <td><%= link_to user.name, user %></td>
+                            <td><%= user.email %></td>
+                            <td>
                                 <% if  ! current_user?(user) %>
                                     <% if user.admin? %>
-                                        <%= link_to "Remove as admin", admin_user_path(user), method: :put, class: 'btn btn-danger m-3' %>
+                                        <%= link_to "Remove as admin", admin_user_path(user), method: :put, class: 'btn btn-outline-danger m-3' %>
                                     <% else %>
-                                        <%= link_to "Set as admin", admin_user_path(user), method: :put, class: 'btn btn-primary m-3' %>
+                                        <%= link_to "Set as admin", admin_user_path(user), method: :put, class: 'btn btn-outline-primary m-3' %>
                                     <% end %>
                                 <% end %>
                                 <% if current_user.admin? && !current_user?(user) %>
-                                    <%= link_to "delete", admin_user_path(user), method: :delete, data: { confirm: "Are you sure?" }, class: 'btn btn-danger' %>
+                                    <%= link_to "delete", admin_user_path(user), method: :delete, data: { confirm: "Are you sure?" }, class: 'btn btn-outline-danger' %>
                                 <% end %>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    <% end %>
+                            </td>
+                        </tr>
+                    <% end %>
+                </tbody>
+            </table>
+        </blockquote>
+    </div>
 </div>
 
 <div class="text-center border-top pt-3">
     <%= will_paginate %>
 </div>    
+
