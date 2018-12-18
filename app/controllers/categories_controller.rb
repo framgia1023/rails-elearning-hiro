@@ -9,4 +9,5 @@ class CategoriesController < ApplicationController
     end
     @lesson = Lesson.new
   end
+  
 end

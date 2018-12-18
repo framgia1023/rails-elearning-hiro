@@ -1,6 +1,5 @@
 class Admin::AdminController < ApplicationController
      
-  
   private
 
   def admin_user
