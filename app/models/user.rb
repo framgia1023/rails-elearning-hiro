@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+  has_many :lessons, dependent: :destroy
+  has_many :categories, through: :lessons
+
   validates :name, presence:true, length: { maximum:25, minimum:2 }
 
   before_save { email.downcase! }

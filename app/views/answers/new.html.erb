@@ -1,0 +1,21 @@
+<div class="row">
+    <div class="col-lg-6 offset-lg-3">
+        <div class="container">
+            <h1><%= @lesson.category.title %></h1>
+            <div class="card text-center">
+                <h5 class="card-header">
+                    <%= @lesson.next_word.word %>
+                </h5>
+                <div class="card-body">
+                    <% @lesson.next_word.choices.each do |choice| %>
+                            <%= form_for ([:lesson,@answer]) do |f| %>
+                            <%= f.hidden_field :word_id, :value => choice.word_id %>
+                            <%= f.hidden_field :choice_id, :value => choice.id %>
+                            <%= f.submit choice.choice, class: 'btn btn-primary btn-block mb-3'%>
+                            <% end %>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
