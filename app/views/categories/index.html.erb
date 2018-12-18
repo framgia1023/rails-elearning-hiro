@@ -30,7 +30,10 @@
                                 </div>
                                 <div class="col-lg-4 text-right">
                                     <div><%= "Learned of"  %></div>
-                                    <div class="mt-5 mb-0"><%= link_to "Show results", root_path, class: 'btn btn-info' %></div>
+                                    <%= form_for @lesson do |f| %>
+                                        <%= f.hidden_field :category_id, :value => category.id %>
+                                        <%= f.submit "Learn",  class: 'btn btn-primary btn-block' %>
+                                    <% end %>
                                 </div>
                             </div>
                          </div>

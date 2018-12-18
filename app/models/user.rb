@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+  has_many :lessons, dependent: :destroy
+  has_many :categories, through: :lessons
+
   validates :name, presence:true, length: { maximum:25, minimum:2 }
 
   before_save { email.downcase! }
@@ -24,11 +27,11 @@ class User < ApplicationRecord
   mount_uploader :picture, PictureUploader
 
   validate :picture_size
-  #custom validations
+ 
   def picture_size
-      if picture.size > 5.megabytes
-          errors.add(:picture, "should be less than 5MB")
-      end
+    if picture.size > 5.megabytes
+        errors.add(:picture, "should be less than 5MB")
+    end
   end
 
   def follow(other_user)

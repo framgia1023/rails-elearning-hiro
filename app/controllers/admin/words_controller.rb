@@ -32,7 +32,7 @@ class Admin::WordsController < Admin::AdminController
   def update
     @word = Word.find(params[:id])
     @category = Category.find(params[:category_id])
-    if @word.update_attributes(update_word_params)
+    if @word.update_attributes(word_params)
       flash[:success] = "Successfully updated the word."
       redirect_to admin_category_words_url
     else 
@@ -48,10 +48,6 @@ class Admin::WordsController < Admin::AdminController
 
   private
     def word_params
-      params.require(:word).permit(:word, choices_attributes: [:choice, :correct])
-    end
-
-    def update_word_params
       params.require(:word).permit(:word, choices_attributes: [:choice, :correct, :id])
     end
 
