@@ -32,7 +32,14 @@
                                     <div><%= "Learned of"  %></div>
                                     <%= form_for @lesson do |f| %>
                                         <%= f.hidden_field :category_id, :value => category.id %>
-                                        <%= f.submit "Learn",  class: 'btn btn-primary btn-block' %>
+                                        <% if !checklearn(category).nil? %>
+                                        <div class='btn btn-light'>
+                                            <i class="fa fa-eye"></i>
+                                            <%= link_to  "Show results", lesson_url(category.lessons.ids) %>
+                                        </div>
+                                        <% else %>
+                                            <%= f.submit "Learn",  class: 'btn btn-primary btn-block' %>
+                                        <% end %>
                                     <% end %>
                                 </div>
                             </div>

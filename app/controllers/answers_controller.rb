@@ -4,8 +4,10 @@ class AnswersController < ApplicationController
     @lesson = Lesson.find(params[:lesson_id])
     answer = @lesson.next_word
     if answer.nil?
+      @correctcount = @lesson.choices.where(correct: true).count
+      @lesson.update(results: @correctcount)
       flash[:success] = "You answered all questions."
-      redirect_to lesson_url(params[:lesson_id])
+      redirect_to lesson_url(@lesson)
     else 
       @answer = @lesson.answers.build
     end
