@@ -9,6 +9,12 @@ class LessonsController < ApplicationController
         redirect_to new_lesson_answer_url(@lesson)
     end
   end
+
+  def show 
+    @answers = Answer.where(lesson_id: params[:id])
+    @answer = Answer.find_by(lesson_id: params[:id])
+    @lesson = Lesson.find_by(params[:id])
+  end
   
   private
     def lesson_params
