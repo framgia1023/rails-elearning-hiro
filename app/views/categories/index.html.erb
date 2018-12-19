@@ -29,13 +29,13 @@
                                     <p class="lead"><%= category.description %></p>
                                 </div>
                                 <div class="col-lg-4 text-right">
-                                    <div><%= "Learned of"  %></div>
                                     <%= form_for @lesson do |f| %>
                                         <%= f.hidden_field :category_id, :value => category.id %>
                                         <% if !checklearn(category).nil? %>
-                                        <div class='btn btn-light'>
+                                        <p class="font-italic text-muted"> Learned <%= checklearn(category).results %> of <%= checklearn(category).category.words.count %></p>
+                                        <div class='btn btn-light text-dark'>
                                             <i class="fa fa-eye"></i>
-                                            <%= link_to  "Show results", lesson_url(category.lessons.ids) %>
+                                            <%= link_to  "Show results", lesson_url(category.lessons.ids), class: 'text-dark'%>
                                         </div>
                                         <% else %>
                                             <%= f.submit "Learn",  class: 'btn btn-primary btn-block' %>
