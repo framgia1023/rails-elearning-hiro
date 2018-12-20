@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   has_many :lessons, dependent: :destroy
   has_many :categories, through: :lessons
+  has_many :activities
 
   validates :name, presence:true, length: { maximum:25, minimum:2 }
 

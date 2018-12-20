@@ -20,7 +20,7 @@ class UsersController < ApplicationController
   end
 
   def feed
-    @activities = Activity.where(user_id: current_user.id) 
+    @activities = Activity.where(user_id: current_user.id).order('created_at DESC').paginate(page: params[:page], per_page: 5)
     @user = User.find_by(id: current_user.id)
   end
 

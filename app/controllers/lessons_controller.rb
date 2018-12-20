@@ -6,8 +6,8 @@ class LessonsController < ApplicationController
   def create
     @lesson = Lesson.new(lesson_params)
     if @lesson.save
-       @lesson.create_activity(user_id: current_user.id)
-        redirect_to new_lesson_answer_url(@lesson)
+      @lesson.create_activity(user_id: current_user.id)
+      redirect_to new_lesson_answer_url(@lesson)
     end
   end
 
