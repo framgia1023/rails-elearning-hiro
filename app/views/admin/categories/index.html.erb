@@ -17,7 +17,7 @@
                     <th>Title</th>
                     <th>Description</th>
                     <th>Words</th>
-                    <th>edit/delete</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -27,8 +27,12 @@
                         <td><%= category.description %></td>
                         <td><%= category.words.count %></td>
                         <td>
-                            <%= link_to "Edit", edit_admin_category_path(category), class: 'btn btn-info' %>
-                            <%= link_to "Delete", admin_category_path(category), method: :delete, data: {confirm: 'Are you sure?'}, class:'btn btn-danger' %>
+                            <%= link_to edit_admin_category_path(category) do %>
+                                <i class="fa fa-pencil"></i>
+                            <% end %>
+                            <%= link_to admin_category_path(category), method: :delete, data: {confirm: 'Are you sure?'} do %>
+                                <i class="fa fa-trash ml-3"></i>
+                            <% end %>
                         </td>
                     </tr>
                 <% end %>

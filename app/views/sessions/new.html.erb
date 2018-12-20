@@ -12,7 +12,9 @@
                     <%= f.label :password %>
                     <%= f.password_field :password, class: 'form-control' %>
                 </div>
-                <%= f.submit "Login", class: 'btn btn-primary btn-block' %>
+                <%= f.submit "Login", class: 'btn btn-primary float-right' %>
+                <%= link_to "Don't have an account yet? Register now!", new_user_path %>
+
             <% end %>
         </div>
     </div>

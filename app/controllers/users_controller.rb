@@ -20,10 +20,13 @@ class UsersController < ApplicationController
   end
 
   def feed
+    @activities = Activity.where(user_id: current_user.id) 
+    @user = User.find_by(id: current_user.id)
   end
 
   def index
     @users = User.paginate(page: params[:page], per_page: 4)
+    
   end
 
   def edit

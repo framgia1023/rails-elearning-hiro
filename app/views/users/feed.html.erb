@@ -13,8 +13,35 @@
     <div class="col-lg-8">
         <div class="card">
             <div class="card-header">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                <h2>Acitivity Feed</h2>  
+            </div>
+            <div class="card-body">
+                <blockquote class="blockquote mb-0">
+                    <table class="table table-striped">
+                        <tbody>
+                            <% @activities.each do |activity| %>
+                                <tr>
+                                    <td>
+                                        <% if @user.picture.blank? %>
+                                            <%= image_tag '/default.png', class:'rounded-circle ml-4' %>
+                                        <% else %>
+                                            <%= image_tag @user.picture.to_s, class:'rounded-circle ml-4'%>
+                                        <% end %>
+                                    </td>
+                                    <td>
+                                         <%= link_to current_user.name, current_user %> learned <%= activity.action.results %> of <%= activity.action.category.words.count %> in  <%= link_to activity.action.category.title, lesson_url(activity.action.id) %><br>
+                                         <small class="text-muted"><%= time_ago_in_words(activity.created_at) %></small>
+                                    </td>
+                                </tr>
+                            <% end %>
+                        </tbody>
+                    </table>
+                </blockquote>
             </div>
         </div>
+        <div class="text-center border-top pt-3">
+            
+        </div>    
     </div>      
 </div>
+
