@@ -12,7 +12,7 @@
                 <section class="stats">
                     <%= render 'users/stats' %><hr>
                 </section>
-                <%= link_to current_user.lessons.sum(:results) %> <br>Words learned<br>
+                <%= link_to current_user.lessons.sum(:results), user_words_path(current_user) %> <br>Words learned<br>
             </div>
         </div>
     </div>

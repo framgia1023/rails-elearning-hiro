@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     member do
     	get :following, :followers
 		end
+		resources :words, only: [:index]
 	end
 
 	namespace :admin do

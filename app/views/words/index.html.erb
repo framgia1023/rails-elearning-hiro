@@ -1,0 +1,76 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-4">
+            <div class="card mb-3">
+                <div class="card-body text-center">
+                    <% if @user.picture.blank? %>
+                        <%= image_tag '/default.png', class:'rounded-circle large-image mb-2' %>
+                    <% else %>
+                        <%= image_tag @user.picture.to_s, class:'rounded-circle large-image mb-2'%>
+                    <% end %>
+                    <h1><%= @user.name %></h1>
+                    <%= @user.email %><hr>
+                    <section class="stats">
+                        <%= render 'users/stats' %><hr>
+                    </section>
+                    <%= link_to @user.lessons.sum(:results), user_words_path(@user) %> <br>Words learned<br>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-8">
+            <blockquote class="blockquote mb-0">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <div class="row">
+                                <div class="col-lg-6 text-left">
+                                    <form>
+                                        <div class="form-row align-items-center mb-3">
+                                            <div class="col-auto my-1">
+                                                <label class="mr-sm-2" for="inlineFormCustomSelect">Words Learned</label>
+                                                <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                                                    <option selected>All</option>
+                                                    <option value="1">One</option>
+                                                    <option value="2">Two</option>
+                                                    <option value="3">Three</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="col-lg-6 text-right">
+                                    <%= link_to "Back to Dashboard", feed_path %>
+                                </div>
+                            </div>          
+                        </tr>
+                        <tr>
+                            <td>Word</td>
+                            <td>Correct Answer</td>
+                            <td>Your Answer</td>
+                            <td></td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% @lessons.each do |lesson|%>
+                            <% lesson.answers.each do |answer|%>
+                                <tr>
+                                    <td><%= answer.word.word %></td>
+                                    <td><%= answer.word.correct_choice.choice %></td>
+                                    <td><%= answer.choice.choice %></td>
+                                    <% if  answer.word.correct_choice.choice == answer.choice.choice%>
+                                        <td><i class="fa fa-check"></i></td>
+                                    <% else %>
+                                        <td><i class="fa fa-times"></i></td>
+                                    <% end %>
+                                </tr>
+                            <% end %>
+                        <% end %>
+                    </tbody>
+                </table>
+            </blockquote>
+        </div>
+    </div>
+</div>
+
+
+
