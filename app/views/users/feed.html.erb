@@ -3,9 +3,9 @@
         <div class="card mb-3">
             <div class="card-body text-center">
                 <% if @user.picture.blank? %>
-                    <%= image_tag '/default.png', class:'rounded-circle large-image' %>
+                    <%= image_tag '/default.png', class:'rounded-circle large-image mb-2' %>
                 <% else %>
-                    <%= image_tag @user.picture.to_s, class:'rounded-circle large-image'%>
+                    <%= image_tag @user.picture.to_s, class:'rounded-circle large-image mb-2'%>
                 <% end %>
                 <h1><%= current_user.name %></h1>
                 <%= current_user.email %><hr>
@@ -28,20 +28,24 @@
                             <% @activities.each do |activity| %>
                                 <tr>
                                     <td>
-                                        <% if @user.picture.blank? %>
-                                            <%= image_tag '/default.png', class:'rounded-circle ml-4 small-image' %>
-                                        <% else %>
-                                            <%= image_tag @user.picture.to_s, class:'rounded-circle ml-4 small-image'%>
-                                        <% end %>
-                                    </td>
-                                    <td>
-                                        <% if activity.action_type == "Lesson" %>
-                                            <%= link_to "You", current_user %> learned <%= activity.action.results %> of <%= activity.action.category.words.count %> in  <%= link_to activity.action.category.title, lesson_url(activity.action.id) %><br>
-                                            <small class="text-muted"><%= time_ago_in_words(activity.created_at) %> ago</small>
-                                        <% elsif activity.action_type == "Relationship"%>
-                                            <%= link_to "You", current_user %> followed <%= link_to activity.action.followed.name, user_url(activity.action.followed) %><br>
-                                            <small class="text-muted"><%= time_ago_in_words(activity.created_at) %> ago</small>
-                                        <% end %>
+                                        <div class="row">
+                                            <div class="col-lg-3">
+                                                <% if @user.picture.blank? %>
+                                                    <%= image_tag '/default.png', class:'rounded-circle ml-4 small-image' %>
+                                                <% else %>
+                                                    <%= image_tag @user.picture.to_s, class:'rounded-circle ml-4 small-image'%>
+                                                <% end %>
+                                            </div>
+                                            <div class="col-lg-7">
+                                                <% if activity.action_type == "Lesson" %>
+                                                    <%= link_to "You", current_user %> learned <%= activity.action.results %> of <%= activity.action.category.words.count %> in  <%= link_to activity.action.category.title, lesson_url(activity.action.id) %><br>
+                                                    <small class="text-muted"><%= time_ago_in_words(activity.created_at) %> ago</small>
+                                                <% elsif activity.action_type == "Relationship"%>
+                                                    <%= link_to "You", current_user %> followed <%= link_to activity.action.followed.name, user_url(activity.action.followed) %><br>
+                                                    <small class="text-muted"><%= time_ago_in_words(activity.created_at) %> ago</small>
+                                                <% end %>
+                                            </div>
+                                        </div>
                                     </td>
                                 </tr>
                             <% end %>
