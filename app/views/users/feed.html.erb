@@ -2,11 +2,17 @@
     <div class="col-lg-4">
         <div class="card mb-3">
             <div class="card-body text-center">
+                <% if @user.picture.blank? %>
+                    <%= image_tag '/default.png', class:'rounded-circle large-image' %>
+                <% else %>
+                    <%= image_tag @user.picture.to_s, class:'rounded-circle large-image'%>
+                <% end %>
                 <h1><%= current_user.name %></h1>
-                <%= current_user.email %></h1>
+                <%= current_user.email %><hr>
                 <section class="stats">
-                    <%= render 'users/stats' %>
+                    <%= render 'users/stats' %><hr>
                 </section>
+                <%= link_to current_user.lessons.sum(:results) %> <br>Words learned<br>
             </div>
         </div>
     </div>
@@ -23,9 +29,9 @@
                                 <tr>
                                     <td>
                                         <% if @user.picture.blank? %>
-                                            <%= image_tag '/default.png', class:'rounded-circle ml-4 feed-image' %>
+                                            <%= image_tag '/default.png', class:'rounded-circle ml-4 small-image' %>
                                         <% else %>
-                                            <%= image_tag @user.picture.to_s, class:'rounded-circle ml-4 feed-image'%>
+                                            <%= image_tag @user.picture.to_s, class:'rounded-circle ml-4 small-image'%>
                                         <% end %>
                                     </td>
                                     <td>
