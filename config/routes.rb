@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'words/index'
   namespace :admin do
     get 'words/new'
   end
