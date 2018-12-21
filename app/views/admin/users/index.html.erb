@@ -18,9 +18,9 @@
                         <tr>
                             <td>
                                 <% if user.picture.blank? %>
-                                    <%= image_tag '/default.png', class:'rounded-circle ml-4' %>
+                                    <%= image_tag '/default.png', class:'rounded-circle ml-4 small-image' %>
                                 <% else %>
-                                    <%= image_tag user.picture.to_s, class:'rounded-circle ml-4'%>
+                                    <%= image_tag user.picture.to_s, class:'rounded-circle ml-4 small-image'%>
                                 <% end %>
                             </td>
                             <td><%= link_to user.name, user %></td>

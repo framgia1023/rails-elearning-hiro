@@ -3,15 +3,15 @@
 <div class="row">
     <% @users.each do |user| %>
         <div class="col-lg-6">
-            <div class="media mb-3">
+            <div class="media">
                 <div class="media-body">
-                    <div class="jumbotron jumbotron-fluid p-2">
+                    <div class="jumbotron jumbotron-fluid p-2 mb-3">
                         <div class="row">
                             <div class="col-lg-5">
                             <% if user.picture.blank? %>
-                                <%= image_tag '/default.png', class:'rounded-circle ml-4' %>
+                                <%= image_tag '/default.png', class:'rounded-circle ml-4 small-image' %>
                             <% else %>
-                                <%= image_tag user.picture.to_s, class:'rounded-circle ml-4'%>
+                                <%= image_tag user.picture.to_s, class:'rounded-circle ml-4 small-image'%>
                             <% end %>
                             </div>
                             <div class="col-lg-7 text-center">

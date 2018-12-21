@@ -6,9 +6,9 @@
             <%= form_for @user do |f| %>
             <%= render 'shared/error_messages', object: f.object %>
             <% if @user.picture.blank? %>
-                <%= image_tag '/default.png', class: 'rounded-circle mb-4' %>
+                <%= image_tag '/default.png', class: 'rounded-circle mb-4 large-image' %>
             <% else %>
-                <%= image_tag @user.picture.to_s, class:'rounded-circle mb-4'%>
+                <%= image_tag @user.picture.to_s, class:'rounded-circle mb-4 large-image'%>
             <% end %>
                 <div class="form-group">
                     <%= f.file_field :picture %>

@@ -17,15 +17,16 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @activities = @user.activities.order('created_at DESC').paginate(page: params[:page], per_page: 5)
   end
 
   def feed
-    @activities = Activity.where(user_id: current_user.id).order('created_at DESC').paginate(page: params[:page], per_page: 5)
-    @user = User.find_by(id: current_user.id)
+    @user = User.find(current_user.id)
+    @activities = @user.activities.order('created_at DESC').paginate(page: params[:page], per_page: 5)
   end
 
   def index
-    @users = User.paginate(page: params[:page], per_page: 4)
+    @users = User.paginate(page: params[:page], per_page: 8)
     
   end
 
