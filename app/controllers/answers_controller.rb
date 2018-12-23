@@ -2,6 +2,7 @@ class AnswersController < ApplicationController
 
   def new
     @lesson = Lesson.find(params[:lesson_id])
+
     answer = @lesson.next_word
     if answer.nil?
       @correctcount = @lesson.choices.where(correct: true).count
