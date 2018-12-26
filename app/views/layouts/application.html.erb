@@ -1,20 +1,22 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>RailsElearningHiro</title>
+        <title>Hiro E-learning App</title>
         <%= csrf_meta_tags %>
         <%= csp_meta_tag %>
 
         <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
         <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+        <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Cabin+Sketch" rel="stylesheet">
+        <%= favicon_link_tag %>
     </head>
     <body>
         <%= render 'layouts/header' %>
         <%= render 'shared/flash_messages' %>
-        <div class="container p-3">
+        <div>
         <%= yield %>
         </div>
-        <%= debug session[:user_id] if Rails.env == 'development' %>
         <%= render 'layouts/footer' %>
     </body>
 </html>

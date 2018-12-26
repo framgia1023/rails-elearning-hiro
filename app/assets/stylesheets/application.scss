@@ -1,14 +1,72 @@
 @import "bootstrap";
 @import "font-awesome";
 
+body{
+    font-family: 'Quicksand', sans-serif;
+    #font-family: 'Cabin Sketch', cursive;
+}
+
 .large-image {
     width: 150px
 }
 
 .small-image {
-    width: 110px
+    width: 75px
 }
 
 .xs-image {
     width: 20px
+}
+
+.backgroundimg { 
+    height: 710px;
+    background:url(/images/signuppagepic.jpg) center no-repeat;
+    background-size: cover;
+}
+
+.backgroundimg2 { 
+    height: 710px;
+    background:url(/images/signuppagepic2.jpg) center no-repeat;
+    background-size: cover;
+}
+
+.login_form{
+    margin-top: 250px;
+    background: rgba(255,255,255,0.5);
+}
+
+.login_form2{
+    background: rgba(255,255,255,0.5);
+}
+
+.backgroundimg3 { 
+    height: 710px;
+    background:url(/images/pic5.jpg) center no-repeat;
+    background-size: cover;
+}
+
+.backgroundimg4 { 
+    background:url(/images/homepagepic2.jpg) center no-repeat;
+    background-size: cover;
+}
+
+.div_opasity{
+  height: 100%;
+  background: rgba(255,255,255,0.5);
+}
+
+.logo{
+    width: 25px;
+}
+
+.logo2{
+    width: 35px;
+}
+
+.page-footer {
+    border-width:3px !important;
+}
+
+.page-header {
+    border-width:3px !important;
 }

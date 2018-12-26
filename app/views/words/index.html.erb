@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container mt-3">
     <div class="row">
         <div class="col-lg-4">
             <div class="card mb-3">
@@ -13,7 +13,7 @@
                     <section class="stats">
                         <%= render 'users/stats' %><hr>
                     </section>
-                    <%= link_to @user.lessons.sum(:results), user_words_path(@user) %> <br>Words learned<br>
+                    <%= link_to @learnwordscount, user_words_path(@user) %> <br>Words learned<br>
                 </div>
             </div>
         </div>
@@ -44,10 +44,10 @@
                             </div>          
                         </tr>
                         <tr>
-                            <td>Word</td>
-                            <td>Correct Answer</td>
-                            <td>Your Answer</td>
-                            <td></td>
+                            <th>Word</th>
+                            <th>Correct Answer</th>
+                            <th>Your Answer</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>

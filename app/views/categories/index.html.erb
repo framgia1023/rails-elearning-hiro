@@ -1,78 +1,83 @@
-<div class= "container"> 
-    <div class="row mb-2">
-        <div class="col-lg-8 text-left">
-            <h1>Categories</h1>
-        </div>
-        <div class="col-lg-4 text-right p-0 mt-2">
-            <div class="row">
-                <% if params[:status] == "learned" %>
-                    <div class="col-lg-4">
-                        <%= link_to "All", categories_path, class: 'btn btn-outline-info btn-block' %>
+<div class="jumbotron backgroundimg3 jumbotron-fluid mb-0 p-0">
+    <div class="div_opasity">
+        <div class="container">
+            <div class="row mb-2">
+                <div class="col-lg-8 text-left mt-2">
+                    <h1>Categories</h1>
+                </div>
+                <div class="col-lg-4 text-right p-0 mt-3">
+                    <div class="row">
+                        <% if params[:status] == "learned" %>
+                            <div class="col-lg-4">
+                                <%= link_to "All", categories_path, class: 'btn btn-link text-dark font-weight-bold btn-block' %>
+                            </div>
+                            <div class="col-lg-4">
+                                <%= link_to "Learnd", categories_path(status: :learned), class: 'btn btn-primary btn-block' %>
+                            </div>
+                            <div class="col-lg-4">   
+                                <%= link_to "Unlearnd", categories_path(status: :unlearned), class: 'btn btn-link text-dark font-weight-bold btn-block' %>
+                            </div>   
+                        <% elsif params[:status] == "unlearned"%>
+                            <div class="col-lg-4">
+                                <%= link_to "All", categories_path, class: 'btn btn-link text-dark font-weight-bold btn-block' %>
+                            </div>
+                            <div class="col-lg-4">
+                                <%= link_to "Learnd", categories_path(status: :learned), class: 'btn btn-link text-dark font-weight-bold btn-block' %>
+                            </div>
+                            <div class="col-lg-4">
+                                <%= link_to "Unlearnd", categories_path(status: :unlearned), class: 'btn btn-primary btn-block' %>
+                            </div>
+                        <% else %>
+                            <div class="col-lg-4">
+                                <%= link_to "All", categories_path, class: 'btn btn-primary btn-block' %>
+                            </div>
+                            <div class="col-lg-4">
+                                <%= link_to "Learnd", categories_path(status: :learned), class: 'btn btn-link text-dark font-weight-bold btn-block' %>
+                            </div>
+                            <div class="col-lg-4">
+                                <%= link_to "Unlearnd", categories_path(status: :unlearned), class: 'btn btn-link text-dark font-weight-bold btn-block' %>
+                            </div>
+                        <% end %>
                     </div>
-                    <div class="col-lg-4">
-                        <%= link_to "Learnd", categories_path(status: :learned), class: 'btn btn-primary btn-block' %>
-                    </div>
-                    <div class="col-lg-4">   
-                        <%= link_to "Unlearnd", categories_path(status: :unlearned), class: 'btn btn-outline-info btn-block' %>
-                    </div>   
-                <% elsif params[:status] == "unlearned"%>
-                    <div class="col-lg-4">
-                        <%= link_to "All", categories_path, class: 'btn btn-outline-info btn-block' %>
-                    </div>
-                    <div class="col-lg-4">
-                        <%= link_to "Learnd", categories_path(status: :learned), class: 'btn btn-outline-info btn-block' %>
-                    </div>
-                    <div class="col-lg-4">
-                        <%= link_to "Unlearnd", categories_path(status: :unlearned), class: 'btn btn-primary btn-block' %>
-                    </div>
-                <% else %>
-                    <div class="col-lg-4">
-                        <%= link_to "All", categories_path, class: 'btn btn-primary btn-block' %>
-                    </div>
-                    <div class="col-lg-4">
-                        <%= link_to "Learnd", categories_path(status: :learned), class: 'btn btn-outline-info btn-block' %>
-                    </div>
-                    <div class="col-lg-4">
-                        <%= link_to "Unlearnd", categories_path(status: :unlearned), class: 'btn btn-outline-info btn-block' %>
-                    </div>
-                <% end %>
                 </div>
             </div>
-        </div>
-    </div>
-    <div class="row">
-        <% @categories.each do |category| %>
-            <div class="col-lg-6">
-                <div class="jumbotron jumbotron">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-7 ml-3">
-                                <h1><%= category.title %></h1>
-                                <p class="lead"><%= category.description %></p>
-                            </div>
-                            <div class="col-lg-4 text-right">
-                                <%= form_for @lesson do |f| %>
-                                    <%= f.hidden_field :category_id, :value => category.id %>
-                                    <% if checklearn(category).nil? %>
-                                        <%= f.submit "Learn",  class: 'btn btn-primary btn-block mt-5' %>
-                                    <% elsif checklearn(category).results.nil? %>
-                                        <%= f.submit "Learn",  class: 'btn btn-primary btn-block mt-5' %>
-                                    <% else %>
-                                        <p class="font-italic text-muted"> Learned <%= checklearn(category).results %> of <%= checklearn(category).category.words.count %></p>
-                                        <div class='btn btn-light text-dark'>
-                                            <i class="fa fa-eye"></i>
-                                            <%= link_to  "Show results", lesson_url(category.lessons.ids), class: 'text-dark'%>
-                                        </div>
+            <div class="row">
+                <% @categories.each do |category| %>
+                    <div class="col-lg-6">
+                        <div class="jumbotron">
+                            <div class="row">
+                                <div class="col-lg-7 ml-3">
+                                    <h1><%= category.title %></h1>
+                                    <p class="lead"><%= category.description %></p>
+                                </div>
+                                <div class="col-lg-4 text-right">
+                                    <%= form_for @lesson do |f| %>
+                                        <%= f.hidden_field :category_id, :value => category.id %>
+                                        <% if checklearn(category).nil? %>
+                                            <%= button_tag type: "Learn",  class: 'btn btn-primary  mt-5' do %>
+                                                <i class="fa fa-book" aria-hidden="true"> Learn</i>
+                                            <% end %>
+                                        <% elsif checklearn(category).results.nil? %>
+                                            <%= button_tag type: "Learn",  class: 'btn btn-primary  mt-5' do %>
+                                                <i class="fa fa-book" aria-hidden="true">  Learn</i>
+                                            <% end %>
+                                        <% else %>
+                                            <p class="font-italic text-muted"> Correct answers<br> <%= checklearn(category).results %> of <%= checklearn(category).category.words.count %></p>
+                                            <div class='btn btn-light text-dark'>
+                                                <i class="fa fa-eye"></i>
+                                                <%= link_to  "Show results", lesson_url(checklearn(category).id), class: 'text-dark'%>
+                                            </div>
+                                        <% end %>
                                     <% end %>
-                                <% end %>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>                
-        <% end %>
-    </div>
-    <div class="text-center border-top pt-3">
-        <%= will_paginate %>
+                    </div>                
+                <% end %>
+            </div>
+            <div class="text-center mt-0">
+                <%= will_paginate %>
+            </div>
+        </div>
     </div>
 </div>
