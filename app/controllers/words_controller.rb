@@ -3,4 +3,5 @@ class WordsController < ApplicationController
     @user = User.find(params[:user_id])
     @lessons = @user.lessons
   end
+  
 end
