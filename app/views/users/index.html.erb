@@ -1,5 +1,5 @@
 <h1 class="text-center border-bottom mb-3">Users</h1>
-<% if @users.nil? %>
+<% unless @users.any? %>
     <h4>Nothing to display</h2>
 <% else %>
     <div class="row">
