@@ -1,62 +1,72 @@
-<div class="row">
-    <div class="col-lg-4">
-        <div class="card mb-3">
-            <div class="card-body text-center">
-                <% if @user.picture.blank? %>
-                    <%= image_tag '/default.png', class:'rounded-circle large-image mb-2' %>
-                <% else %>
-                    <%= image_tag @user.picture.to_s, class:'rounded-circle large-image mb-2'%>
-                <% end %>
-                <h1><%= current_user.name %></h1>
-                <%= current_user.email %><hr>
-                <section class="stats">
-                    <%= render 'users/stats' %><hr>
-                </section>
-                <%= link_to current_user.lessons.sum(:results), user_words_path(current_user) %> <br>Words learned<br>
+<div class="jumbotron backgroundimg3 jumbotron-fluid mb-0 p-0">
+    <div class="div_opasity">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mt-3">
+                    <div class="card mb-3">
+                        <div class="card-body text-center">
+                            <% if @user.picture.blank? %>
+                                <%= image_tag '/default.png', class:'rounded-circle large-image mb-2' %>
+                            <% else %>
+                                <%= image_tag @user.picture.to_s, class:'rounded-circle large-image mb-2'%>
+                            <% end %>
+                            <h1><%= current_user.name %></h1>
+                            <%= current_user.email %><hr>
+                            <section class="stats">
+                                <%= render 'users/stats' %><hr>
+                            </section>
+                            <%= link_to @learnwordscount, user_words_path(current_user) %> <br>Words learned<br>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-8 mt-3">
+                    <div class="card">
+                        <div class="card-header">
+                            <h2>Dashboard / Acitivity Feed</h2>  
+                        </div>
+                        <div class="card-body">
+                            <blockquote class="blockquote mb-0">
+                                <table class="table table-striped">
+                                    <tbody>
+                                        <% @activities.each do |activity| %>
+                                            <tr>
+                                                <td>
+                                                    <div class="row">
+                                                        <div class="col-lg-3 pr-0">
+                                                            <% if @user.picture.blank? %>
+                                                                <%= image_tag '/default.png', class:'rounded-circle ml-4 small-image' %>
+                                                            <% else %>
+                                                                <%= image_tag @user.picture.to_s, class:'rounded-circle ml-4 small-image'%>
+                                                            <% end %>
+                                                        </div>
+                                                        <div class="col-lg-9 pl-0">
+                                                            <% if activity.action_type == "Lesson" %>
+                                                                <% if activity.action.results.nil? %>
+                                                                    <%= link_to "You", current_user %> learned  <%= activity.action.category.title %> but didn't answer all words.
+                                                                    <%= link_to "Try again!", categories_path %><br>
+                                                                <% else %>
+                                                                    <%= link_to "You", current_user %> learned <%= activity.action.category.words.count %> of <%= activity.action.category.words.count %> in  <%= link_to activity.action.category.title, lesson_url(activity.action.id) %><br>
+                                                                <% end %>
+                                                                <small class="text-muted"><%= time_ago_in_words(activity.created_at) %> ago</small>
+                                                            <% elsif activity.action_type == "Relationship"%>
+                                                                <%= link_to "You", current_user %> followed <%= link_to activity.action.followed.name, user_url(activity.action.followed) %><br>
+                                                                <small class="text-muted"><%= time_ago_in_words(activity.created_at) %> ago</small>
+                                                            <% end %>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        <% end %>
+                                    </tbody>
+                                </table>
+                            </blockquote>
+                        </div>
+                    </div>
+                    <div class="pt-3 text-center paginate">
+                        <%= will_paginate @activities %>
+                    </div>    
+                </div>      
             </div>
         </div>
     </div>
-    <div class="col-lg-8">
-        <div class="card">
-            <div class="card-header">
-                <h2>Acitivity Feed</h2>  
-            </div>
-            <div class="card-body">
-                <blockquote class="blockquote mb-0">
-                    <table class="table table-striped">
-                        <tbody>
-                            <% @activities.each do |activity| %>
-                                <tr>
-                                    <td>
-                                        <div class="row">
-                                            <div class="col-lg-3">
-                                                <% if @user.picture.blank? %>
-                                                    <%= image_tag '/default.png', class:'rounded-circle ml-4 small-image' %>
-                                                <% else %>
-                                                    <%= image_tag @user.picture.to_s, class:'rounded-circle ml-4 small-image'%>
-                                                <% end %>
-                                            </div>
-                                            <div class="col-lg-7">
-                                                <% if activity.action_type == "Lesson" %>
-                                                    <%= link_to "You", current_user %> learned <%= activity.action.results %> of <%= activity.action.category.words.count %> in  <%= link_to activity.action.category.title, lesson_url(activity.action.id) %><br>
-                                                    <small class="text-muted"><%= time_ago_in_words(activity.created_at) %> ago</small>
-                                                <% elsif activity.action_type == "Relationship"%>
-                                                    <%= link_to "You", current_user %> followed <%= link_to activity.action.followed.name, user_url(activity.action.followed) %><br>
-                                                    <small class="text-muted"><%= time_ago_in_words(activity.created_at) %> ago</small>
-                                                <% end %>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                            <% end %>
-                        </tbody>
-                    </table>
-                </blockquote>
-            </div>
-        </div>
-        <div class="text-center border-top pt-3">
-            <%= will_paginate @activities %>
-        </div>    
-    </div>      
 </div>
-

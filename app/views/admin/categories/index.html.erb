@@ -1,44 +1,53 @@
-<div class="card">
-  <div class="card-header">
-    <div class="row">
-        <div class="col-lg-6">
-            <h2>Admin | Categories</h2>
+<div class="jumbotron backgroundimg3 jumbotron-fluid mb-0 p-0">
+    <div class="div_opasity">
+        <div class="container pt-3">
+            <div class="card">
+                <div class="card-header">
+                    <div class="row ">
+                        <div class="col-lg-6">
+                            <h2>Admin | Categories</h2>
+                        </div>
+                        <div class="col-lg-6 text-right">
+                            <%= link_to "Create Category", new_admin_category_path, class: 'btn btn-primary' %>
+                        </div>
+                    </div>    
+                </div>
+                <div class="card-body p-3">
+                    <blockquote class="blockquote mb-0">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Description</th>
+                                    <th class="pl-0">Words</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% @categories.each do |category| %>
+                                    <tr>
+                                        <td><%= link_to category.title, admin_category_words_path(category) %></td>
+                                        <td><%= category.description %></td>
+                                        <td class="pl-4"><%= category.words.count %></td>
+                                        <td>
+                                            <%= link_to edit_admin_category_path(category) do %>
+                                                <i class="fa fa-pencil"></i>
+                                            <% end %>
+                                            <%= link_to admin_category_path(category), method: :delete, data: {confirm: 'Are you sure?'} do %>
+                                                <i class="fa fa-trash ml-3"></i>
+                                            <% end %>
+                                        </td>
+                                    </tr>
+                                <% end %>
+                            </tbody>
+                        </table>
+                    </blockquote>
+                </div>
+            </div>
+            <div class="text-center mt-3 paginate">
+                <%= will_paginate %>
+            </div>
         </div>
-        <div class="col-lg-6 text-right">
-            <%= link_to "Create Category", new_admin_category_path, class: 'btn btn-primary' %>
-        </div>
-    </div>    
-  </div>
-  <div class="card-body">
-    <blockquote class="blockquote mb-0">
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Title</th>
-                    <th>Description</th>
-                    <th>Words</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                <% @categories.each do |category| %>
-                    <tr>
-                        <td><%= link_to category.title, admin_category_words_path(category) %></td>
-                        <td><%= category.description %></td>
-                        <td><%= category.words.count %></td>
-                        <td>
-                            <%= link_to edit_admin_category_path(category) do %>
-                                <i class="fa fa-pencil"></i>
-                            <% end %>
-                            <%= link_to admin_category_path(category), method: :delete, data: {confirm: 'Are you sure?'} do %>
-                                <i class="fa fa-trash ml-3"></i>
-                            <% end %>
-                        </td>
-                    </tr>
-                <% end %>
-            </tbody>
-        </table>
-    </blockquote>
-  </div>
+    </div>
 </div>
 

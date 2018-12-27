@@ -2,7 +2,7 @@ class Admin::CategoriesController < Admin::AdminController
   before_action :admin_user
 
   def index
-    @categories = Category.all
+    @categories = Category.paginate(page: params[:page], per_page: 8)
   end
 
   def new
