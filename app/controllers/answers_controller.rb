@@ -7,8 +7,8 @@ class AnswersController < ApplicationController
     if answer.nil?
       @correctcount = @lesson.choices.where(correct: true).count
       @lesson.update(results: @correctcount)
-      @results_nil_lesson = Lesson.where(user_id: @lesson.user_id, category_id: @lesson.category_id, results: nil )
-      if !@results_nil_lesson.nil?
+      @results_nil_lesson = current_user.lessons.where(category_id: @lesson.category_id, results: nil)
+      unless @results_nil_lesson.nil?
         @results_nil_lesson.destroy_all
       end
       flash[:success] = "You answered all questions."

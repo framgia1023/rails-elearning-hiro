@@ -18,13 +18,13 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @activities = @user.activities.order('created_at DESC').paginate(page: params[:page], per_page: 5)
-    @learnwordscount =  Lesson.joins("INNER JOIN words ON lessons.category_id = words.category_id").where(lessons: {user_id: @user.id}).count
+    @learnwordscount =  @user.words.count
   end
 
   def feed
     @user = User.find(current_user.id)
     @activities = @user.activities.order('created_at DESC').paginate(page: params[:page], per_page: 5)
-    @learnwordscount =  Lesson.joins("INNER JOIN words ON lessons.category_id = words.category_id").where(lessons: {user_id: @user.id}).count
+    @learnwordscount =  current_user.words.count
   end
 
   def index
