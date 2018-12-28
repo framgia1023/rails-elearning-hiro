@@ -1,35 +1,39 @@
-<div class="row">
-    <div class="col-lg-6 offset-lg-3">
-        <div class="container">
-            <div class="card">
-                <div class="card-header">
-                    <h2>Category registration</h2>
+<div class="jumbotron backgroundimg3 jumbotron-fluid mb-0 p-0">
+    <div class="div_opasity">
+        <div class="container p-3">
+            <div class="row">
+                <div class="col-lg-6 offset-lg-3">
+                        <div class="card">
+                            <div class="card-header">
+                                <h2>Category registration</h2>
+                            </div>
+                            <div class="card-body">
+                                <blockquote class="blockquote mb-0">
+                                    <%= form_for [:admin,@category] do |f| %>
+                                        <%= render 'shared/error_messages', object: f.object %>
+                                        <div class="form-group">
+                                            <%= f.label :title %>
+                                            <%= f.text_field :title, class: 'form-control', placeholder: "Please enter Category Title" %>
+                                        </div>
+                                        <div class="form-group">
+                                            <%= f.label :description %>
+                                            <%= f.text_area :description, class: 'form-control', :size => "20x10", placeholder: "Please enter Category Description" %>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-2 text-center">
+                                                <%= link_to  "Back", admin_categories_path %>
+                                            </div>
+                                            <div class="col-lg-10">
+                                                <%= f.submit "Submit", class: 'btn btn-primary btn-block' %>
+                                            </div>
+                                        </div>
+                                    <% end %>
+                                </blockquote>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="card-body">
-                    <blockquote class="blockquote mb-0">
-                        <%= form_for [:admin,@category] do |f| %>
-                            <%= render 'shared/error_messages', object: f.object %>
-                            <div class="form-group">
-                                <%= f.label :title %>
-                                <%= f.text_field :title, class: 'form-control', placeholder: "Please enter Category Title" %>
-                            </div>
-                            <div class="form-group">
-                                <%= f.label :description %>
-                                <%= f.text_area :description, class: 'form-control', :size => "20x10", placeholder: "Please enter Category Description" %>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-2 text-center">
-                                    <%= link_to  "Back", admin_categories_path %>
-                                </div>
-                                <div class="col-lg-10">
-                                    <%= f.submit "Submit", class: 'btn btn-primary btn-block' %>
-                                </div>
-                            </div>
-                        <% end %>
-                    </blockquote>
-                 </div>
             </div>
         </div>
     </div>
 </div>
-
