@@ -1,73 +1,71 @@
-<div class="container mt-3">
-    <div class="row">
-        <div class="col-lg-4">
-            <div class="card mb-3">
-                <div class="card-body text-center">
-                    <% if @user.picture.blank? %>
-                        <%= image_tag '/default.png', class:'rounded-circle large-image mb-2' %>
-                    <% else %>
-                        <%= image_tag @user.picture.to_s, class:'rounded-circle large-image mb-2'%>
-                    <% end %>
-                    <h1><%= @user.name %></h1>
-                    <%= @user.email %><hr>
-                    <section class="stats">
-                        <%= render 'users/stats' %><hr>
-                    </section>
-                    <%= link_to @learnwordscount, user_words_path(@user) %> <br>Words learned<br>
+<div class="jumbotron backgroundimg3 jumbotron-fluid mb-0 p-0">
+    <div class="div_opasity">
+        <div class="container p-3">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="card mb-3">
+                        <div class="card-body text-center">
+                            <% if @user.picture.blank? %>
+                                <%= image_tag '/default.png', class:'rounded-circle large-image mb-2' %>
+                            <% else %>
+                                <%= image_tag @user.picture.to_s, class:'rounded-circle large-image mb-2'%>
+                            <% end %>
+                            <h1><%= @user.name %></h1>
+                            <%= @user.email %><hr>
+                            <section class="stats">
+                                <%= render 'users/stats' %><hr>
+                            </section>
+                            <%= link_to @learnwordscount, user_words_path(@user) %> <br>Words learned<br>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                    <div class="card p-2">
+                        <blockquote class="blockquote mb-0">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <div class="row">
+                                            <div class="col-lg-6 text-left m-0">   
+                                                <%= form_tag(user_words_path, method: 'get') do %>
+                                                    <%= label_tag :title, "Category" %>
+                                                    <%= select_tag :title, options_from_collection_for_select(@categories, :id, :title, params[:title]), include_blank: "ALL", onchange: 'this.form.submit()' %>
+                                                <% end %>
+                                            </div>
+                                            <div class="col-lg-6 text-right m-0">
+                                                <%= link_to "Back to Dashboard", feed_path %>
+                                            </div>
+                                        </div>          
+                                    </tr>
+                                    <tr>
+                                        <th>Word</th>
+                                        <th>Correct Answer</th>
+                                        <th>Your Answer</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% @answers.each do |answer|%>
+                                        <tr>
+                                            <td><%= answer.word.word %></td>
+                                            <td><%= answer.word.correct_choice.choice %></td>
+                                            <td><%= answer.choice.choice %></td>
+                                            <% if  answer.word.correct_choice.choice == answer.choice.choice%>
+                                                <td><i class="fa fa-check"></i></td>
+                                            <% else %>
+                                                <td><i class="fa fa-times"></i></td>
+                                            <% end %>
+                                        </tr>
+                                    <% end %>
+                                </tbody>
+                            </table>
+                        </blockquote>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="col-lg-8">
-            <blockquote class="blockquote mb-0">
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <div class="row">
-                                <div class="col-lg-6 text-left">                                      
-                                    <form>
-                                        <div class="form-row align-items-center mb-3">
-                                            <div class="col-auto my-1">
-                                                <label class="mr-sm-2" for="inlineFormCustomSelect">Words Learned</label>
-                                                <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
-                                                    <option selected>All</option>
-                                                    <option value="1">One</option>
-                                                    <option value="2">Two</option>
-                                                    <option value="3">Three</option>
-                                                </select>
-                                            </div>
-                                        </div>                          
-                                    </form>
-                                </div>
-                                <div class="col-lg-6 text-right">
-                                    <%= link_to "Back to Dashboard", feed_path %>
-                                </div>
-                            </div>          
-                        </tr>
-                        <tr>
-                            <th>Word</th>
-                            <th>Correct Answer</th>
-                            <th>Your Answer</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <% @lessons.each do |lesson|%>
-                            <% lesson.answers.each do |answer|%>
-                                <tr>
-                                    <td><%= answer.word.word %></td>
-                                    <td><%= answer.word.correct_choice.choice %></td>
-                                    <td><%= answer.choice.choice %></td>
-                                    <% if  answer.word.correct_choice.choice == answer.choice.choice%>
-                                        <td><i class="fa fa-check"></i></td>
-                                    <% else %>
-                                        <td><i class="fa fa-times"></i></td>
-                                    <% end %>
-                                </tr>
-                            <% end %>
-                        <% end %>
-                    </tbody>
-                </table>
-            </blockquote>
+         <div class="text-center mt-0 paginate">
+            <%= will_paginate @answers %>
         </div>
     </div>
 </div>

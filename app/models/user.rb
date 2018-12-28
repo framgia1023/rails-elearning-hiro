@@ -3,6 +3,7 @@ class User < ApplicationRecord
   has_many :categories, through: :lessons
   has_many :activities
   has_many :words, through: :lessons
+  has_many :answers, through: :lessons
   
 
   validates :name, presence:true, length: { maximum:25, minimum:2 }
