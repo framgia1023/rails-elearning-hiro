@@ -22,21 +22,21 @@
                 <div class="col-lg-8">
                     <div class="card p-2">
                         <blockquote class="blockquote mb-0">
+                            <div class="card-header">
+                                <div class="row">
+                                    <div class="col-lg-6 text-left m-0">   
+                                        <%= form_tag(user_words_path, method: 'get') do %>
+                                            <%= label_tag :title, "Category" %>
+                                            <%= select_tag :title, options_from_collection_for_select(@categories, :id, :title, params[:title]), include_blank: "ALL", onchange: 'this.form.submit()' %>
+                                        <% end %>
+                                    </div>
+                                    <div class="col-lg-6 text-right m-0">
+                                        <%= link_to "Back to Dashboard", feed_path %>
+                                    </div>
+                                </div>  
+                            </div>   
                             <table class="table table-striped">
                                 <thead>
-                                    <tr>
-                                        <div class="row">
-                                            <div class="col-lg-6 text-left m-0">   
-                                                <%= form_tag(user_words_path, method: 'get') do %>
-                                                    <%= label_tag :title, "Category" %>
-                                                    <%= select_tag :title, options_from_collection_for_select(@categories, :id, :title, params[:title]), include_blank: "ALL", onchange: 'this.form.submit()' %>
-                                                <% end %>
-                                            </div>
-                                            <div class="col-lg-6 text-right m-0">
-                                                <%= link_to "Back to Dashboard", feed_path %>
-                                            </div>
-                                        </div>          
-                                    </tr>
                                     <tr>
                                         <th>Word</th>
                                         <th>Correct Answer</th>
