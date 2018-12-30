@@ -1,36 +1,31 @@
-<div class="jumbotron backgroundimg jumbotron-fluid mb-0">
-        <div class="row"> 
-            <div class="col-3">
-            </div>
-            <div class="col-4">
-                <%= image_tag '/images/awesome2.png', class:'awesome' %>
-            </div>
-            <div class="col-5">
-                <div class="card login_form">
-                    <div class="card-body">
-                        <h2 class="text-center">Framgia E-learning System</h2>
-                        <p class="text-center text-dark">Login to restart!</p>
-                        <hr class="m-1">
-                        <%= form_for(:session, url:sessions_path) do |f| %>
-                            <div class="form-group">
-                                <%= f.label :email %>
-                                <%= f.email_field :email, class: 'form-control' %>
-                            </div>
-                            <div class="form-group">
-                                <%= f.label :password %>
-                                <%= f.password_field :password, class: 'form-control' %>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-9 pr-0">
-                                    <%= link_to "Don't have an account yet? Register now!", new_user_path %>
-                                </div>
-                                <div class="col-lg-3">
-                                    <%= f.submit "Login", class: 'btn btn-primary btn-block float-right' %>
-                                </div>
-                            </div>
-                        <% end %>
+<div class="jumbotron backgroundimg jumbotron-fluid mb-0 p-0 ">
+    <div class="row"> 
+        <div class="col-6 offset-3">
+            <%= image_tag '/images/awesome2.png', class:'awesome' %>
+        </div>
+        <div class="card login_form">
+            <div class="card-body">
+                <h2 class="text-center">Framgia E-learning System</h2>
+                <p class="text-center text-dark">Login to restart!</p>
+                <hr class="m-1">
+                <%= form_for(:session, url:sessions_path) do |f| %>
+                    <div class="form-group">
+                        <%= f.label :email %>
+                        <%= f.email_field :email, class: 'form-control' %>
                     </div>
-            
+                    <div class="form-group">
+                        <%= f.label :password %>
+                        <%= f.password_field :password, class: 'form-control' %>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-9 pr-0">
+                            <%= link_to "Don't have an account yet? Register now!", new_user_path %>
+                        </div>
+                        <div class="col-lg-3">
+                            <%= f.submit "Login", class: 'btn btn-primary btn-block float-right' %>
+                        </div>
+                    </div>
+                <% end %>
             </div>
         </div>
     </div>
