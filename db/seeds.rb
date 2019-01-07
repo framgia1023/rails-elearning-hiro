@@ -21,45 +21,24 @@ User.create(
   )
 end
 
-30.times do |n|
-  name  = Faker::Name.name
-  email = "example-#{n+1}@example.com"
-  password = "password"
-  User.create!(name:  name,
-               email: email,
-               password:              password,
-               password_confirmation: password,
-               department: "QA Dept.")
-end
 
-#   20.times do |t|
-#   title  = "TEST-#{t+1}"
-#   description = "This is test category."
-#   Category.create!(title:  title,
-#                description: description
-#                )
-# end
 
 categories = [
 {
       title: "Basic noun 10: French", 
       description: "This is test category. 10 basic words are registered in this category. Please try this at first.",
-      difficulty: "0"
 },
 {
       title: "Basic noun 10: Japanese", 
       description: "This is test category. 10 basic words are registered in this category. Please try this at first.",
-      difficulty: "0"
 },
 {
       title: "Advanced noun 30", 
       description: "This is test category. 30 words advanced words are registered in this category. Please try this after the bacical categories.",
-      difficulty: "0"
 },
 {
       title: "Advanced verb 60", 
       description: "This is test category. 60 words advanced words are registered in this category. Please try this after the bacical categories.",
-      difficulty: "0"
 }
 ]
 
@@ -71,192 +50,192 @@ end
 
 words = [
       {      
-      content: "Printemps", 
+      word: "Printemps", 
       choices_attributes:
             [
             {
-                  content: "Spring", 
+                  choice: "Spring", 
                   judge:"1",
             },
             {
-                  content: "Summer", 
+                  choice: "Summer", 
             },
             {
-                  content: "Autumn", 
+                  choice: "Autumn", 
             },
             {
-                  content: "Winter", 
+                  choice: "Winter", 
             }
             ]
       },
       {
-            content: "Ciel", 
+            word: "Ciel", 
             choices_attributes:
             [
             {
-                  content: "Star", 
+                  choice: "Star", 
             },
             {
-                  content: "Sky", 
+                  choice: "Sky", 
                   judge:"1",
             },
             {
-                  content: "Rainbow", 
+                  choice: "Rainbow", 
             },
             {
-                  content: "Night", 
+                  choice: "Night", 
             }
             ]
       },
       {
-            content: "Vous", 
+            word: "Vous", 
             choices_attributes:
             [
             {
-                  content: "Me", 
+                  choice: "Me", 
             },
             {
-                  content: "She", 
+                  choice: "She", 
             },
             {
-                  content: "You", 
+                  choice: "You", 
                   judge:"1",
             },
             {
-                  content: "They", 
+                  choice: "They", 
             }
             ]
       },
       {
-            content: "Avenir", 
+            word: "Avenir", 
             choices_attributes:
             [
             {
-                  content: "Future", 
+                  choice: "Future", 
                   judge:"1", 
             },
             {
-                  content: "Past", 
+                  choice: "Past", 
             },
             {
-                  content: "Time",
+                  choice: "Time",
             },
             {
-                  content: "Hour",
+                  choice: "Hour",
             }
             ]
       },
       {
-            content: "Lune", 
+            word: "Lune", 
             choices_attributes:
             [
             {
-                  content: "Sun", 
+                  choice: "Sun", 
             },
             {
-                  content: "Planet", 
+                  choice: "Planet", 
             },
             {
-                  content: "Star", 
+                  choice: "Star", 
             },
             {
-                  content: "Moon", 
+                  choice: "Moon", 
                   judge:"1",
             }
             ]
       },
       {
-            content: "Étoile", 
+            word: "Étoile", 
             choices_attributes:
             [
             {
-                  content: "Star", 
+                  choice: "Star", 
                   judge:"1",
             },
             {
-                  content: "Silius", 
+                  choice: "Silius", 
             },
             {
-                  content: "Stage", 
+                  choice: "Stage", 
             },
             {
-                  content: "Strange",
+                  choice: "Strange",
             }
             ]
       },
       {
-            content: "Bisou", 
+            word: "Bisou", 
             choices_attributes:
             [
             {
-                  content: "Reality", 
+                  choice: "Reality", 
             },
             {
-                  content: "Jewel", 
+                  choice: "Jewel", 
                   judge:"1",
             },
             {
-                  content: "Home", 
+                  choice: "Home", 
             },
             {
-                  content: "Canpany", 
+                  choice: "Canpany", 
             }
             ]
       },
       {
-            content: "Espoir", 
+            word: "Espoir", 
             choices_attributes:
             [
             {
-                  content: "Sadness", 
+                  choice: "Sadness", 
             },
             {
-                  content: "Happiness", 
+                  choice: "Happiness", 
             },
             {
-                  content: "Hope", 
+                  choice: "Hope", 
                   judge:"1",
             },
             {
-                  content: "Joy", 
+                  choice: "Joy", 
             }
             ]
       },
       {
-            content: "Famille", 
+            word: "Famille", 
             choices_attributes:
             [
             {
-                  content: "Farm", 
+                  choice: "Farm", 
             },
             {
-                  content: "Form", 
+                  choice: "Form", 
             },
             {
-                  content: "Fantasy", 
+                  choice: "Fantasy", 
             },
             {
-                  content: "Family", 
+                  choice: "Family", 
                   judge:"1",
             }
             ]
       },
       {
-            content: "Vérité", 
+            word: "Vérité", 
             choices_attributes:
             [
             {
-                  content: "True", 
+                  choice: "True", 
                   judge:"1",
             },
             {
-                  content: "False", 
+                  choice: "False", 
             },
             {
-                  content: "Good", 
+                  choice: "Good", 
             },
             {
-                  content: "Bad", 
+                  choice: "Bad", 
             }
             ]
       }
@@ -272,192 +251,192 @@ end
 
 words = [
       {      
-      content: "朝", 
+      word: "朝", 
       choices_attributes:
             [
             {
-                  content: "Noon", 
+                  choice: "Noon", 
             },
             {
-                  content: "Morning", 
+                  choice: "Morning", 
                   judge:"1",
             },
             {
-                  content: "Evening", 
+                  choice: "Evening", 
             },
             {
-                  content: "Night", 
+                  choice: "Night", 
             }
             ]
       },
       {
-            content: "水", 
+            word: "水", 
             choices_attributes:
             [
             {
-                  content: "Water", 
+                  choice: "Water", 
                   judge:"1",
             },
             {
-                  content: "Sky", 
+                  choice: "Sky", 
             },
             {
-                  content: "Ripple", 
+                  choice: "Ripple", 
             },
             {
-                  content: "Night", 
+                  choice: "Night", 
             }
             ]
       },
       {
-            content: "夢", 
+            word: "夢", 
             choices_attributes:
             [
             {
-                  content: "Future", 
+                  choice: "Future", 
             },
             {
-                  content: "Night", 
+                  choice: "Night", 
             },
             {
-                  content: "Dream", 
+                  choice: "Dream", 
                   judge:"1",
             },
             {
-                  content: "White", 
+                  choice: "White", 
             }
             ]
       },
       {
-            content: "過去", 
+            word: "過去", 
             choices_attributes:
             [
             {
-                  content: "Future", 
+                  choice: "Future", 
             },
             {
-                  content: "Past", 
+                  choice: "Past", 
                   judge:"1", 
             },
             {
-                  content: "Time",
+                  choice: "Time",
             },
             {
-                  content: "Hour",
+                  choice: "Hour",
             }
             ]
       },
       {
-            content: "太陽", 
+            word: "太陽", 
             choices_attributes:
             [
             {
-                  content: "Sun", 
+                  choice: "Sun", 
                   judge:"1",
             },
             {
-                  content: "Planet", 
+                  choice: "Planet", 
             },
             {
-                  content: "Star", 
+                  choice: "Star", 
             },
             {
-                  content: "Moon", 
+                  choice: "Moon", 
             }
             ]
       },
       {
-            content: "変人", 
+            word: "変人", 
             choices_attributes:
             [
             {
-                  content: "Star", 
+                  choice: "Star", 
             },
             {
-                  content: "Silius", 
+                  choice: "Silius", 
             },
             {
-                  content: "Stage", 
+                  choice: "Stage", 
             },
             {
-                  content: "Stranger",
-                  judge:"1",
-            }
-            ]
-      },
-      {
-            content: "現実", 
-            choices_attributes:
-            [
-            {
-                  content: "Reality", 
-                  judge:"1",
-            },
-            {
-                  content: "Jewel", 
-            },
-            {
-                  content: "Home", 
-            },
-            {
-                  content: "Canpany", 
-            }
-            ]
-      },
-      {
-            content: "喜び", 
-            choices_attributes:
-            [
-            {
-                  content: "Sadness", 
-            },
-            {
-                  content: "Happiness", 
-            },
-            {
-                  content: "Hope", 
-            },
-            {
-                  content: "Joy", 
+                  choice: "Stranger",
                   judge:"1",
             }
             ]
       },
       {
-            content: "幻想", 
+            word: "現実", 
             choices_attributes:
             [
             {
-                  content: "Farm", 
-            },
-            {
-                  content: "Form", 
-            },
-            {
-                  content: "Fantasy", 
+                  choice: "Reality", 
                   judge:"1",
             },
             {
-                  content: "Family", 
+                  choice: "Jewel", 
+            },
+            {
+                  choice: "Home", 
+            },
+            {
+                  choice: "Canpany", 
             }
             ]
       },
       {
-            content: "嘘", 
+            word: "喜び", 
             choices_attributes:
             [
             {
-                  content: "True", 
+                  choice: "Sadness", 
             },
             {
-                  content: "False", 
+                  choice: "Happiness", 
             },
             {
-                  content: "Lie",
+                  choice: "Hope", 
+            },
+            {
+                  choice: "Joy", 
+                  judge:"1",
+            }
+            ]
+      },
+      {
+            word: "幻想", 
+            choices_attributes:
+            [
+            {
+                  choice: "Farm", 
+            },
+            {
+                  choice: "Form", 
+            },
+            {
+                  choice: "Fantasy", 
+                  judge:"1",
+            },
+            {
+                  choice: "Family", 
+            }
+            ]
+      },
+      {
+            word: "嘘", 
+            choices_attributes:
+            [
+            {
+                  choice: "True", 
+            },
+            {
+                  choice: "False", 
+            },
+            {
+                  choice: "Lie",
                   judge:"1", 
             },
             {
-                  content: "Honesty", 
+                  choice: "Honesty", 
             }
             ]
 }
