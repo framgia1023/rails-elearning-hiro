@@ -10,7 +10,8 @@ require 'faker'
 User.create(
   name: 'Hironao Uehara',
   email: 'ueueue6217@gmail.com',
-  password: 'password'
+  password: 'password',
+  admin: "1";
 )
 
 50.times do |n|
@@ -441,3 +442,9 @@ words = [
             ]
 }
 ]
+
+category = Category.second
+
+words.each do |word_params|
+      category.words.create!(word_params)
+end
