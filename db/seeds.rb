@@ -11,7 +11,7 @@ User.create(
   name: 'Hironao Uehara',
   email: 'ueueue6217@gmail.com',
   password: 'password',
-  admin: true;
+  admin: '1'
 )
 
 50.times do |n|
