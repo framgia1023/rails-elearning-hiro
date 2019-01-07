@@ -55,7 +55,7 @@ words = [
             [
             {
                   choice: "Spring", 
-                  judge:"1",
+                  correct:"1",
             },
             {
                   choice: "Summer", 
@@ -77,7 +77,7 @@ words = [
             },
             {
                   choice: "Sky", 
-                  judge:"1",
+                  correct:"1",
             },
             {
                   choice: "Rainbow", 
@@ -99,7 +99,7 @@ words = [
             },
             {
                   choice: "You", 
-                  judge:"1",
+                  correct:"1",
             },
             {
                   choice: "They", 
@@ -112,7 +112,7 @@ words = [
             [
             {
                   choice: "Future", 
-                  judge:"1", 
+                  correct:"1", 
             },
             {
                   choice: "Past", 
@@ -140,7 +140,7 @@ words = [
             },
             {
                   choice: "Moon", 
-                  judge:"1",
+                  correct:"1",
             }
             ]
       },
@@ -150,7 +150,7 @@ words = [
             [
             {
                   choice: "Star", 
-                  judge:"1",
+                  correct:"1",
             },
             {
                   choice: "Silius", 
@@ -172,7 +172,7 @@ words = [
             },
             {
                   choice: "Jewel", 
-                  judge:"1",
+                  correct:"1",
             },
             {
                   choice: "Home", 
@@ -194,7 +194,7 @@ words = [
             },
             {
                   choice: "Hope", 
-                  judge:"1",
+                  correct:"1",
             },
             {
                   choice: "Joy", 
@@ -216,7 +216,7 @@ words = [
             },
             {
                   choice: "Family", 
-                  judge:"1",
+                  correct:"1",
             }
             ]
       },
@@ -226,7 +226,7 @@ words = [
             [
             {
                   choice: "True", 
-                  judge:"1",
+                  correct:"1",
             },
             {
                   choice: "False", 
@@ -259,7 +259,7 @@ words = [
             },
             {
                   choice: "Morning", 
-                  judge:"1",
+                  correct:"1",
             },
             {
                   choice: "Evening", 
@@ -275,7 +275,7 @@ words = [
             [
             {
                   choice: "Water", 
-                  judge:"1",
+                  correct:"1",
             },
             {
                   choice: "Sky", 
@@ -300,7 +300,7 @@ words = [
             },
             {
                   choice: "Dream", 
-                  judge:"1",
+                  correct:"1",
             },
             {
                   choice: "White", 
@@ -316,7 +316,7 @@ words = [
             },
             {
                   choice: "Past", 
-                  judge:"1", 
+                  correct:"1", 
             },
             {
                   choice: "Time",
@@ -332,7 +332,7 @@ words = [
             [
             {
                   choice: "Sun", 
-                  judge:"1",
+                  correct:"1",
             },
             {
                   choice: "Planet", 
@@ -360,7 +360,7 @@ words = [
             },
             {
                   choice: "Stranger",
-                  judge:"1",
+                  correct:"1",
             }
             ]
       },
@@ -370,7 +370,7 @@ words = [
             [
             {
                   choice: "Reality", 
-                  judge:"1",
+                  correct:"1",
             },
             {
                   choice: "Jewel", 
@@ -398,7 +398,7 @@ words = [
             },
             {
                   choice: "Joy", 
-                  judge:"1",
+                  correct:"1",
             }
             ]
       },
@@ -414,7 +414,7 @@ words = [
             },
             {
                   choice: "Fantasy", 
-                  judge:"1",
+                  correct:"1",
             },
             {
                   choice: "Family", 
@@ -433,7 +433,7 @@ words = [
             },
             {
                   choice: "Lie",
-                  judge:"1", 
+                  correct:"1", 
             },
             {
                   choice: "Honesty", 
