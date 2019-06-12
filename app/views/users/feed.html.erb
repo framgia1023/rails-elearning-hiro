@@ -42,14 +42,27 @@
                                                         <div class="col-lg-9 pl-0">
                                                             <% if activity.action_type == "Lesson" %>
                                                                 <% if activity.action.results.nil? %>
-                                                                    <%= link_to "You", current_user %> learned  <%= activity.action.category.title %> but didn't answer all words.
-                                                                    <%= link_to "Try again!", categories_path %><br>
+                                                                    <% if activity.user_id == current_user.id%>
+                                                                        <%= link_to "You", current_user %> learned  <%= activity.action.category.title %> but didn't answer all words.
+                                                                        <%= link_to "Try again!", categories_path %><br>
+                                                                    <% else %>
+                                                                        <%= link_to "#{activity.user.name}", activity.user %> learned  <%= activity.action.category.title %> but didn't answer all words.
+                                                                        <%= link_to "Try again!", categories_path %><br>
+                                                                    <% end %>
                                                                 <% else %>
-                                                                    <%= link_to "You", current_user %> learned <%= activity.action.category.words.count %> of <%= activity.action.category.words.count %> in  <%= link_to activity.action.category.title, lesson_url(activity.action.id) %><br>
+                                                                    <% if activity.user_id == current_user.id %>
+                                                                        <%= link_to "You", current_user %> learned <%= activity.action.category.words.count %> of <%= activity.action.category.words.count %> in  <%= link_to activity.action.category.title, lesson_url(activity.action.id) %><br>
+                                                                    <% else %>
+                                                                        <%= link_to "#{activity.user.name}", activity.user %> learned <%= activity.action.category.words.count %> of <%= activity.action.category.words.count %> in  <%= link_to activity.action.category.title, lesson_url(activity.action.id) %><br>
+                                                                    <% end %>
                                                                 <% end %>
                                                                 <small class="text-muted"><%= time_ago_in_words(activity.created_at) %> ago</small>
                                                             <% elsif activity.action_type == "Relationship"%>
-                                                                <%= link_to "You", current_user %> followed <%= link_to activity.action.followed.name, user_url(activity.action.followed) %><br>
+                                                                <% if activity.user_id == current_user.id %>
+                                                                    <%= link_to "You", current_user %> followed <%= link_to activity.action.followed.name, user_url(activity.action.followed) %><br>
+                                                                <% else %>
+                                                                    <%= link_to "#{activity.user.name}", activity.user %> followed <%= link_to activity.action.followed.name, user_url(activity.action.followed) %><br>
+                                                                <% end %>
                                                                 <small class="text-muted"><%= time_ago_in_words(activity.created_at) %> ago</small>
                                                             <% end %>
                                                         </div>

@@ -16,8 +16,8 @@
                         <div class="lead">
                             <% @lesson.next_word.choices.each do |choice| %>           
                                 <%= form_for ([:lesson,@answer]) do |f| %>
-                                    <%= f.hidden_field :word_id, :value => choice.word_id %>
-                                    <%= f.hidden_field :choice_id, :value => choice.id %>
+                                    <%= f.hidden_field :word_id, value: choice.word_id %>
+                                    <%= f.hidden_field :choice_id, value: choice.id %>
                                     <%= f.submit choice.choice, class: 'btn btn btn-outline-dark btn-block mb-3'%>
                                 <% end %>
                             <% end %>

@@ -23,8 +23,9 @@ class UsersController < ApplicationController
 
   def feed
     @user = User.find(current_user.id)
-    @activities = @user.activities.order('created_at DESC').paginate(page: params[:page], per_page: 5)
+    @activities = Activity.where("user_id IN (?) OR user_id=?", current_user.following_ids, current_user.id).order('created_at DESC').paginate(page: params[:page], per_page: 5)
     @learnwordscount =  current_user.words.count
+
   end
 
   def index

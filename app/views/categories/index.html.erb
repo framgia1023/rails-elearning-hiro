@@ -52,7 +52,7 @@
                                 </div>
                                 <div class="col-lg-4 text-right">
                                     <%= form_for @lesson do |f| %>
-                                        <%= f.hidden_field :category_id, :value => category.id %>
+                                        <%= f.hidden_field :category_id, value: category.id %>
                                         <% if checklearn(category).nil? %>
                                             <%= button_tag type: "Learn",  class: 'btn btn-primary  mt-5' do %>
                                                 <i class="fa fa-book" aria-hidden="true"> Learn</i>

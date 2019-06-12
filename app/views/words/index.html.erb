@@ -24,11 +24,22 @@
                         <blockquote class="blockquote mb-0">
                             <div class="card-header">
                                 <div class="row">
-                                    <div class="col-lg-6 text-left m-0">   
-                                        <%= form_tag(user_words_path, method: 'get') do %>
-                                            <%= label_tag :title, "Category" %>
-                                            <%= select_tag :title, options_from_collection_for_select(@categories, :id, :title, params[:title]), include_blank: "ALL", onchange: 'this.form.submit()' %>
-                                        <% end %>
+                                    <%# <div class="col-lg-6 text-left m-0">    %>
+                                        <%#= form_tag(user_words_path, method: 'get') do %>
+                                            <%#= label_tag :title, "Category" %>
+                                            <%#= select_tag :title, options_from_collection_for_select(@categories, :id, :title, params[:title]), include_blank: "ALL", onchange: 'this.form.submit()' %>
+                                        <%# end %>
+                                    <%# </div> %>
+                                    <div class="dropdown">
+                                        <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <%= @category_name %>
+                                        </button>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                            <%= link_to "All", user_words_path(), class: 'dropdown-item' %>
+                                            <% @categories.each do |category|%>
+                                                <%= link_to category.title, user_words_path(status: category.id), class: 'dropdown-item' %>
+                                            <% end %>
+                                        </div>
                                     </div>
                                     <div class="col-lg-6 text-right m-0">
                                         <%= link_to "Back to Dashboard", feed_path %>
