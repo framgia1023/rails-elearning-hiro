@@ -8,6 +8,13 @@ module SessionsHelper
     !current_user.nil?
   end
 
+  def require_login
+    unless logged_in?
+      flash[:danger] = "Please login to gain access."
+      redirect_to root_url
+    end
+  end
+
   def current_user?(user)
     current_user == user
   end

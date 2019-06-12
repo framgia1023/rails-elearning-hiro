@@ -1,4 +1,5 @@
 class AnswersController < ApplicationController
+  before_action :require_login
 
   def new
     @lesson = Lesson.find(params[:lesson_id])

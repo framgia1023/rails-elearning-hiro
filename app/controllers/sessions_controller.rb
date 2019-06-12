@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  before_action :require_logout, only: [:new]
     
   def new
   end
@@ -22,4 +23,11 @@ class SessionsController < ApplicationController
     redirect_to root_url
   end
     
+  private
+    def require_logout
+      if logged_in?
+        flash[:danger] = "Please logout to go to TopPage."
+        redirect_back(fallback_location: feed_path)
+      end
+    end
 end

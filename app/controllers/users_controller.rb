@@ -46,26 +46,19 @@ class UsersController < ApplicationController
 
   def following
     @user  = User.find(params[:id])
-    @users = @user.following
+    @users = @user.following.paginate(page: params[:page], per_page: 12)
     render 'show_follow'
   end
 
   def followers
     @user  = User.find(params[:id])
-    @users = @user.followers
+    @users = @user.followers.paginate(page: params[:page], per_page: 12)
     render 'show_follower'
   end
 
   private
   def user_params
     params.require(:user).permit(:name,:email,:password,:password_confirmation,:picture)
-  end
-
-  def require_login
-    unless logged_in?
-      flash[:info] = "Please login to gain access."
-      redirect_to login_url
-    end
   end
 
   def correct_user

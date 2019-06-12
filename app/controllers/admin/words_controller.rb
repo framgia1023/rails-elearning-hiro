@@ -1,4 +1,5 @@
 class Admin::WordsController < Admin::AdminController
+  before_action :require_login
 
   def index
     @category = Category.find(params[:category_id])
