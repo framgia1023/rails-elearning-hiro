@@ -37,7 +37,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'bootstrap', '~> 4.1.3'
 gem 'jquery-rails'
-gem 'carrierwave',             '1.2.2'
+gem 'carrierwave',             '1.3.2'
 gem 'faker', :git => 'https://github.com/stympy/faker.git'
 gem 'will_paginate', '~> 3.1.0'
 gem 'will_paginate-bootstrap4'
